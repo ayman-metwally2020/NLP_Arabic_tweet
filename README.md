@@ -16,8 +16,8 @@ Binary sentiment classification (positive/negative) of **Arabic tweets** using a
 ## Approach
 
 1. Load the labelled train and test TSVs (`input/`, positive and negative tweets).
-2. Normalise the text: strip diacritics, URLs, mentions, non-Arabic characters and repeated letters.
-3. Extract unigram (configurable n-gram) bag-of-words features.
+2. Tokenise on whitespace, with optional removal of diacritics (vowel marks) and collapsing of repeated letters.
+3. Build bag-of-words features from unigrams (n-grams are configurable).
 4. Train `nltk.NaiveBayesClassifier` and report precision, recall and F-score per class.
 5. Inspect the most informative features to understand what drives sentiment.
 
@@ -33,8 +33,6 @@ jupyter notebook arabic-sentiment-analysis-in-tweets-nb-bow.ipynb
 - Compare against TF-IDF + logistic regression, and a fine-tuned Arabic transformer such as AraBERT or CAMeLBERT.
 - Handle dialectal Arabic (Egyptian, Gulf, Levantine) explicitly.
 - Serve the model behind an API and track drift on new tweets.
-
-Built while contributing to [Omdena](https://omdena.com/) Arabic NLP community projects.
 
 ---
 Author: [Ayman Metwally](https://github.com/ayman-metwally2020)
